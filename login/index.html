@@ -1,29 +1,26 @@
-<div className="login">
-    <form>
-        <div className='user-box'>
-             <input type="text" name="username" onChange={(event) => {
-                 setUsername(event.target.value);
-             }} required></input>
-             <label>Username</label>
-        </div>
-        <div className="user-box">
-             <input type="password" name="password" onChange={(event) => {
-                 setPassword(event.target.value);
-             }} required></input>
-             <label>Password</label>
-        </div>
-        <div className="user-box">
-            <input type="password" name="confirm-password" onChange={(event) => {
-                setCpassword(event.target.value);
-            }} required></input>
-            <label>Confirm Password</label>
-        </div>
-        <button id = 'register' onClick={register}>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        Register
-        </button>
-    </form>
-</div>
+<head>
+    <link rel="stylesheet" href="alfie_css.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="register-box">
+        <h2>Login</h2>
+        <form>
+            <div class="user-box">
+                 <input type="text" name="username" onChange={(event)>
+                 <label>Username</label>
+            </div>
+            <div class="user-box">
+                 <input type="password" name="password" onChange={(event)}>
+                 <label>Password</label>
+            </div>
+            <button onClick={register}>
+             <span></span>
+             <span></span>
+             <span></span>
+             <span></span>
+             Sign in
+             </button>
+        </form>
+    </div>
+</body>

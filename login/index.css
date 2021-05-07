@@ -4,15 +4,17 @@ body{
 
 .user-box {
     background-color: #A1CDF4;
+    width: 40%;
+    height: 60%;
 }
 
-#button {
+.button {
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #F6E5D5;
     background-color: #A9AFD1;
     border: none;
-    text-align: center;
-
-}
-
-#button:hover {
-    background-color: #A9AFD1;
-}
+    border-radius: 10%;
+  }
+.button:hover {background-color: #B5B1B2}
