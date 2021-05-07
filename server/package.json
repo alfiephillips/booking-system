@@ -7,7 +7,7 @@
   "author": "Alfie Phillips and Leo Wildman",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.19.0",
+    "axios": "^0.21.1",
     "chalk": "^4.1.1",
     "cookie-parser": "^1.4.5",
     "cookie-session": "^1.4.0",
@@ -17,5 +17,8 @@
     "express": "^4.17.1",
     "morgan": "^1.10.0",
     "sqlite3": "^5.0.2"
+  },
+  "scripts": {
+    "start": "node app.js"
   }
 }

@@ -16,13 +16,10 @@ router.get('/register', (req, res) => {
 })
 
 router.post('/register', (req, res) => {
-    console.log(req.body);
     const fname = req.body.fname;
     const lname = req.body.lname;
     const email = req.body.email;
-    const phone = req.body.phone;
-    const school = req.body.school;
-    const password = req.body.role;
+    const password = req.body.password;
 
     db.run(
         `
