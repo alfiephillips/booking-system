@@ -3,11 +3,8 @@
 const express = require('express');
 const cors = require('cors')
 const morgan = require('morgan');
-const chalk = require('chalk');
 const dotenv = require('dotenv');
-const csrf = require('csurf');
-const cookieParser = require('cookie-parser');
-const cookieSession = require('cookie-session');
+const bodyParser = require('body-parser');
 
 const app = express();
 
@@ -17,8 +14,9 @@ dotenv.config({path: '.env'});
 const PORT = process.env.PORT;
 
 // Middleware
-// app.use(express.urlencoded({ extended: true })); 
-app.use(express.json());
+
+app.use(bodyParser.urlencoded({ extended: true })); 
+app.use(bodyParser.json());
 app.use(cors());
 app.use(morgan('dev'));
 

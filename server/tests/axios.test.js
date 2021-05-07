@@ -3,7 +3,7 @@ const axios = require('axios');
 axios.post('http://localhost:3000/auth/register', {
     fname: "Alfie",
     lname: "Phillips",
-    email: "thealfiephillips@gmail.com",
+    email: "test@gmail.com",
     password: "password"
 }).then((response) => {
     console.log(response.data);
