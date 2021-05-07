@@ -1,0 +1,18 @@
+body{
+    background-color: #124D91;
+}
+
+.user-box {
+    background-color: #A1CDF4;
+}
+
+#button {
+    background-color: #A9AFD1;
+    border: none;
+    text-align: center;
+
+}
+
+#button:hover {
+    background-color: #A9AFD1;
+}
