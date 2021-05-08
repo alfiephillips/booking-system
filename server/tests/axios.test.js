@@ -1,10 +1,4 @@
 const axios = require('axios');
+const request = require('request');
 
-axios.post('http://localhost:3000/auth/register', {
-    fname: "Alfie",
-    lname: "Phillips",
-    email: "test@gmail.com",
-    password: "password"
-}).then((response) => {
-    console.log(response.data);
-});
+request.post('http://localhost:3001/auth/login', {form:{email:'leowildman28@gmail.com', password:'lol'}})

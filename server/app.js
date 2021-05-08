@@ -22,7 +22,7 @@ app.use(morgan('dev'));
 
 // Routes
 
-app.use('/', require('./routes/index'));
+app.use('/test', require('./routes/index'));
 app.use('/auth', require('./routes/auth'));
 app.use('/schools', require('./routes/schools'));
 

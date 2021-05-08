@@ -5,50 +5,50 @@ import Axios from "axios";
 function Login() {
 
     const register = () => {
-        Axios.post("http://localhost:3001/user/register", {
-          username: username,
-          password: password,
-          cpassword: cpassword
-        }).then((response) => {
-          console.log(response);
-        });
+        Axios.post('http://localhost:3001/auth/login', {
+            email: email,
+            password: password
+          })
+          .then(function (response) {
+              console.log(response);
+          })
+          .catch(function (error) {
+              alert(error);
+          })
     };
 
     
-    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [cpassword, setCpassword] = useState("");
 
     return(
-        <div className="login">
-            <form>
-                <div className='user-box'>
-                     <input type="text" name="username" onChange={(event) => {
-                         setUsername(event.target.value);
+        <body>
+        <div className="register-box">
+            <form method="POST">
+            <h2>Login</h2>
+            <div className="user-box">
+                 <input type="text" name="email" onChange={(event) => {
+                         setEmail(event.target.value);
                      }} required></input>
-                     <label>Username</label>
-                </div>
-                <div className="user-box">
-                     <input type="password" name="password" onChange={(event) => {
+                 <label>Email</label>
+            </div>
+            <div className="user-box">
+                 <input type="password" name="password" onChange={(event) => {
                          setPassword(event.target.value);
-                     }} required></input>
-                     <label>Password</label>
-                </div>
-                <div className="user-box">
-                    <input type="password" name="confirm-password" onChange={(event) => {
-                        setCpassword(event.target.value);
-                    }} required></input>
-                    <label>Confirm Password</label>
-                </div>
-                <button onClick={register}>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Register
-                </button>
-            </form>
+                 }} required></input>
+                 <label>Password</label>
+            </div>
+            <button onClick={register}>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Sign in
+            </button>
+        </form>
         </div>
+        </body>
+        
     )
 }
 

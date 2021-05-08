@@ -18,8 +18,8 @@ router.post('/register', async (req, res) => {
 
     db.run(
         `
-        INSERT INTO User (fname, lname, email, password)
-        VALUES ('${body.fname}', '${body.lname}', '${body.email}', '${body.password}');
+        INSERT INTO User (fname, lname, email, password, admin)
+        VALUES ('${body.fname}', '${body.lname}', '${body.email}', '${body.password}, 0');
         `
     , (error, data) => {
         if (error) {
@@ -37,6 +37,43 @@ router.post('/register', async (req, res) => {
                 loggedIn: true
             })
         }
+    })
+})
+
+router.get('/login', (req, res) => {
+    return res.json({status: "ok"});
+})
+
+router.post('/login', async (req, res) => {
+    let body = req.body;
+    if ((body.email.includes("'")) || (body.password.includes("'"))){
+        console.log('Stopped SQL Injection')
+        return res.status(400).json({
+            status:400,
+            message: 'Security error'
+        })
+    }
+    db.get(
+        `
+        SELECT * FROM User where email = '${body.email}' and password = '${body.password}';
+        `
+    , (error, data) => {
+        if (error) {
+            console.error(error)
+            return res.status(500).json({
+                status:500,
+                error: error,
+                message: 'Database Error'
+            })
+        }
+        else {
+            console.log('Query was successful');
+            return res.status(200).json({
+                status: 200,
+                message: data
+            })
+        }
+
     })
 })
 

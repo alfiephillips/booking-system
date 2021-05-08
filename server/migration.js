@@ -6,7 +6,7 @@ db.serialize(() => {
     db.run("DROP TABLE IF EXISTS User;");
     db.run(
         `CREATE TABLE IF NOT EXISTS User (
-            id INTEGER NOT NULL, fname TEXT NOT NULL, lname TEXT NOT NULL, email TEXT NOT NULL, password TEXT NOT NULL, admin INTEGER NOT NULL, PRIMARY KEY(id)
+            id INTEGER, fname TEXT NOT NULL, lname TEXT NOT NULL, email TEXT NOT NULL, password TEXT NOT NULL, admin INTEGER NOT NULL, PRIMARY KEY(id)
         );`
     , (error) => {
         if (error) {
