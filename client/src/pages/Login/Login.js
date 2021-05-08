@@ -2,10 +2,19 @@ import "./Login.css"
 import {useState} from "react";
 import Axios from "axios";
 
-function Login() {
 
-    const register = () => {
+function Login() {
+    let [fname, setFname] = useState("");
+    let [lname, setLname] = useState("");
+    let [email, setEmail] = useState("");
+    let [password, setPassword] = useState("");
+
+
+    const processUser = async () => {
+
         Axios.post('http://localhost:3001/auth/login', {
+            fname: fname,
+            lname: lname,
             email: email,
             password: password
           })
@@ -17,17 +26,25 @@ function Login() {
           })
     };
 
-    
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-
     return(
         <body>
         <div className="register-box">
-            <form method="POST">
+            <form>
             <h2>Login</h2>
             <div className="user-box">
-                 <input type="text" name="email" onChange={(event) => {
+                <input type="text" name="fname" onChange={(event) => {
+                    setFname(event.target.value);
+                }} required></input>
+                <label>First Name</label>
+            </div>
+            <div className="user-box">
+                <input type="text" name="lname" onChange={(event) => {
+                    setLname(event.target.value);
+                }} required></input>
+                <label>Last Name</label>
+            </div>
+            <div className="user-box">
+                 <input type="email" name="email" onChange={(event) => {
                          setEmail(event.target.value);
                      }} required></input>
                  <label>Email</label>
@@ -38,7 +55,7 @@ function Login() {
                  }} required></input>
                  <label>Password</label>
             </div>
-            <button onClick={register}>
+            <button onClick={processUser}>
             <span></span>
             <span></span>
             <span></span>

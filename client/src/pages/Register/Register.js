@@ -1,9 +1,8 @@
 import './Register.css';
 import {useState} from "react";
 import Axios from "axios";
-import bcrypt from "bcrypt";
 
-function Login() {
+function Register() {
     const [fname, setFname] = useState("");
     const [lname, setLname] = useState("");
     const [email, setEmail] = useState("");
@@ -12,31 +11,6 @@ function Login() {
 
 
     const register = async () => {
-        if (!fname && lname && email && password && cpassword) {
-            return false;
-        }
-
-        if (password !== cpassword) {
-            return false;
-        }
-        
-        const salt = await bcrypt.genSalt(10);
-
-        try {
-            password = await bcrypt.hash(password, salt);
-            Axios.post("http://localhost:3001/user/register", {
-                fname: fname,
-                lname: lname,
-                email: email,
-                password: password
-                }).then((response) => {
-                console.log(response);
-                });
-        } catch (err) {
-            console.log(err);
-            alert("Error requesting API")
-        }
-    };
 
     return(
         <div className="login">
