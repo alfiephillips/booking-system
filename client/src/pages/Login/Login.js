@@ -4,8 +4,6 @@ import Axios from "axios";
 
 
 function Login() {
-    let [fname, setFname] = useState("");
-    let [lname, setLname] = useState("");
     let [email, setEmail] = useState("");
     let [password, setPassword] = useState("");
 
@@ -13,8 +11,6 @@ function Login() {
     const processUser = async () => {
 
         Axios.post('http://localhost:3001/auth/login', {
-            fname: fname,
-            lname: lname,
             email: email,
             password: password
           })
@@ -22,27 +18,15 @@ function Login() {
               console.log(response);
           })
           .catch(function (error) {
-              alert(error);
+              console.log(error);
+              alert("There has been an error!");
           })
     };
 
     return(
-        <body>
         <div className="register-box">
-            <form>
+            <form method="POST">
             <h2>Login</h2>
-            <div className="user-box">
-                <input type="text" name="fname" onChange={(event) => {
-                    setFname(event.target.value);
-                }} required></input>
-                <label>First Name</label>
-            </div>
-            <div className="user-box">
-                <input type="text" name="lname" onChange={(event) => {
-                    setLname(event.target.value);
-                }} required></input>
-                <label>Last Name</label>
-            </div>
             <div className="user-box">
                  <input type="email" name="email" onChange={(event) => {
                          setEmail(event.target.value);
@@ -64,8 +48,6 @@ function Login() {
             </button>
         </form>
         </div>
-        </body>
-        
     )
 }
 

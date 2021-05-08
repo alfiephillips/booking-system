@@ -1,6 +1,5 @@
-body{
-    background-color: #072751;
-  }
+
+  
   .register-box {
       position: absolute;
       top: 50%;
@@ -51,7 +50,7 @@ body{
     .register-box .user-box input:focus ~ label,
     .register-box .user-box input:valid ~ label {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      top: -20px;
+      top: -40px;
       left: 0;
       color: #81A7CF;
       font-size: 12px;

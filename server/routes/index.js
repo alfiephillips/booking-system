@@ -5,8 +5,6 @@ const db = new sqlite.Database('./database.db')
 const router = express.Router();
 
 
-// @route GET /
-
 router.get('/', (req, res) => {
     res.json({
         message: "Welcome to the api!",

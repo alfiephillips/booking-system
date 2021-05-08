@@ -1,6 +1,8 @@
 const sqlite = require('sqlite3');
-const db = new sqlite.Database('./database.db')
+const bcrypt = require('bcrypt');
+const db = new sqlite.Database('./database.db');
 const chalk = require('chalk');
+const fs = require('fs');
 
 db.serialize(() => {
     db.run("DROP TABLE IF EXISTS User;");
@@ -20,3 +22,10 @@ db.serialize(() => {
         }
     });
 })
+
+async function writeToFile() {
+    let salt = await bcrypt.genSalt(10)
+    fs.writeFileSync('.salt', salt);
+}
+
+writeToFile()

@@ -1,15 +1,8 @@
 const axios = require('axios');
 
-// let res = axios.post('http://localhost:3000/auth/login', {form:{fname: "Alfie", lname: "Phillips", email:'leowildman28@gmail.com', password:'lol'}});
-
-// let res = axios.post('http://localhost:3000/auth/register', {form:{fname: "Alfie", lname: "Phillips", email: "thealfiephillips@gmail.com", password: "testpasswordlol", cpassword: "testpasswordlol"}});
-// console.log(res.data);
-
 axios.post('http://localhost:3000/auth/login', {
-    fname: "Alfie",
-    lname: "Phillips",
     email: "thealfiephillips@gmail.com",
-    password: "thepasswordlol",
+    password: "password123",
 }).then((response) => {
     console.log(response.data)
 }).catch((error) => {
@@ -20,8 +13,8 @@ axios.post('http://localhost:3000/auth/login', {
 //     fname: "Alfie",
 //     lname: "Phillips",
 //     email: "thealfiephillips@gmail.com",
-//     password: "thepasswordlol",
-//     cpassword: "thepasswordlol"
+//     password: "password123",
+//     cpassword: "password123"
 // }).then((response) => {
 //     console.log(response.data)
 // }).catch((error) => {
