@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 
+
 const app = express();
 
 // Configuration
@@ -13,12 +14,18 @@ const app = express();
 dotenv.config({path: '.env'});
 const PORT = process.env.PORT;
 
+
 // Middleware
 
 app.use(bodyParser.urlencoded({ extended: true })); 
 app.use(bodyParser.json());
 app.use(cors());
 app.use(morgan('dev'));
+
+// Passport Middleware
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Routes
 

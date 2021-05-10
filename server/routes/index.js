@@ -6,8 +6,10 @@ const router = express.Router();
 
 
 router.get('/', (req, res) => {
-    res.json({
-        message: "Welcome to the api!",
+    res.status(200).json({
+        current_user_url: "https://localhost:3000/auth/user",
+        current_user_school: "https://localhost:3000/auth/user/schools",
+        message: "Welcome to the API"
     })
 })
 
