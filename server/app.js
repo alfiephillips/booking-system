@@ -24,8 +24,8 @@ app.use(morgan('dev'));
 
 // Passport Middleware
 
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 // Routes
 
