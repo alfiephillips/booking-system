@@ -62,11 +62,11 @@ router.post('/register', (req, res) => {
         data += chunk;
     }).on('end', async function() {
         let salt = data;
-        body.password = await bcrypt.hash(body.password, salt);
+        let encryptedPassword = await bcrypt.hash(body.password, salt);
         db.run(
             `
             INSERT INTO User (fname, lname, email, password)
-            VALUES ('${body.fname}', '${body.lname}', '${body.email}', '${body.password}');
+            VALUES ('${body.fname}', '${body.lname}', '${body.email}', '${encryptedPassword}');
             `
         , (error, data) => {
             if (error) {
@@ -125,39 +125,39 @@ router.post('/login', async (req, res) => {
     };
 
     async function checkHash(email, password){
-        db.get(`SELECT password FROM User WHERE email = '${body.email}'`, (error, results) => {
+        let dPass = '';
+        db.get(`SELECT password FROM User WHERE email = '${email}'`, (error, results) => {
             if (error) {
                 console.log(error);
                 return false;
             } else {
-                let readStream = fs.createReadStream('.salt', 'utf8');
-                let data = '';
+                dPass = results.password;
                 
-                readStream.on('data', function(chunk) {
-                    data += chunk;
-                }).on('end', async function() {
-                    let salt = data;
-                    password = await bcrypt.hash(password, salt);
-                    if (results.password == password){
-                        return true;
-                    } else {
-                        return false;
-                    }
-
-                }).on('error', function(err) {
-                    res.end(err);
-                });
             }
         })
+        let salt = fs.readFileSync('.salt', 'utf8');
+        password = await bcrypt.hash(password, salt);
+        console.log(password);
+
+        if (password === dPass) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    if (checkHash(body.email, body.password)) {
+
+    let result = await checkHash(body.email, body.password);
+    console.log(result);
+    if (result === true) {
+        console.log('success')
         return res.status(201).json({
             status: 201,
             message: "success",
             loggedIn: true
         })
-    } else {
+    } else if (result === false) {
+        console.log('fail')
         return res.status(400).json({
             status: 400,
             message: "Incorrect password or email!",
