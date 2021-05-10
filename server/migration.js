@@ -5,10 +5,10 @@ const chalk = require('chalk');
 const fs = require('fs');
 
 db.serialize(() => {
-    db.run("DROP TABLE IF EXISTS User;");
+    db.run("DROP TABLE IF EXISTS Bookings;");
     db.run(
-        `CREATE TABLE IF NOT EXISTS User (
-            id INTEGER, fname TEXT NOT NULL, lname TEXT NOT NULL, email TEXT NOT NULL UNIQUE, password TEXT NOT NULL, PRIMARY KEY(id)
+        `CREATE TABLE IF NOT EXISTS Bookings (
+            id TEXT NOT NULL UNIQUE, room_name TEXT NOT NULL, author TEXT NOT NULL, class TEXT NOT NULL, start_time INTEGER NOT NULL, end_time INTEGER NOT NULL, time_created INTEGER NOT NULL, description TEXT
         );`
     , (error) => {
         if (error) {
@@ -17,15 +17,8 @@ db.serialize(() => {
             )
         } else {
             console.log(
-                chalk.green("User Table created successfully!")
+                chalk.green("Bookings Table created successfully!")
             )
         }
     });
 })
-
-async function writeToFile() {
-    let salt = await bcrypt.genSalt(10)
-    fs.writeFileSync('.salt', salt);
-}
-
-writeToFile()

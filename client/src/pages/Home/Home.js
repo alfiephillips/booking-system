@@ -1,13 +1,19 @@
 import './Home.css';
-import React from 'react';
+import { useAuth0 } from "@auth0/auth0-react";
 
-function Home() {
+function Home(){
+    const { loginWithRedirect } = useAuth0();
     return (
-        <div>
-        </div>
+    <div>
+        <nav>
+            <ul>
+            <li className="active"><a href="/">Home</a></li>
+            <li><a onClick={() => loginWithRedirect()} href='/'>Login</a></li>
+            </ul>
+        </nav>
+    </div>
     )
 }
-
 
 
 export default Home;

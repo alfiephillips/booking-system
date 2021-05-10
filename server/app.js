@@ -16,7 +16,6 @@ const app = express();
 dotenv.config({path: '.env'});
 const PORT = process.env.PORT;
 
-
 // Middleware
 
 app.use(bodyParser.urlencoded({ extended: true })); 
@@ -28,8 +27,8 @@ app.use(cookieParser());
 // Routes
 
 app.use('/', require('./routes/index'));
-app.use('/auth', require('./routes/auth'));
-app.use('/schools', require('./routes/schools'));
+app.use('/bookings', require('./routes/bookings'));
+
 
 // Listening for requests
 
