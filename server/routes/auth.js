@@ -24,6 +24,7 @@ router.get('/register', (req, res) => {
 router.post('/register', (req, res) => {
     let body = req.body;
 
+
     if (!body.fname && body.lname && body.email && body.password && body.cpassword) {
         console.log("No form data")
         return res.status(400).json({
@@ -114,7 +115,8 @@ router.get('/login', (req, res) => {
     });
 })
 
-router.post('/login', async (req, res) => {
+router.post('/login', async (req, res) => { 
+
     let body = req.body;
     if ((body.email.includes("'")) || (body.password.includes("'"))){
         console.log('Stopped SQL Injection')
@@ -128,16 +130,16 @@ router.post('/login', async (req, res) => {
         let dPass = '';
         db.get(`SELECT password FROM User WHERE email = '${email}'`, (error, results) => {
             if (error) {
-                console.log(error);
+                console.error(error);
                 return false;
             } else {
-                dPass = results.password;
-                
+                if (results != undefined){
+                    dPass = results.password;
+                }
             }
         })
         let salt = fs.readFileSync('.salt', 'utf8');
         password = await bcrypt.hash(password, salt);
-        console.log(password);
 
         if (password === dPass) {
             return true;
@@ -148,16 +150,24 @@ router.post('/login', async (req, res) => {
 
 
     let result = await checkHash(body.email, body.password);
-    console.log(result);
     if (result === true) {
-        console.log('success')
+        let r = Math.random().toString(36).substring(7);
+
+        res.cookie('auth', r, {
+            maxAge: 60 * 60 * 1000, // 1 hour
+            httpOnly: true,
+            secure: false,
+            sameSite: true,
+          })
+
         return res.status(201).json({
             status: 201,
             message: "success",
-            loggedIn: true
+            loggedIn: true,
+            cookie: res.cookie
         })
+
     } else if (result === false) {
-        console.log('fail')
         return res.status(400).json({
             status: 400,
             message: "Incorrect password or email!",
