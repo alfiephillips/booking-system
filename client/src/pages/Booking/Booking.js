@@ -6,7 +6,7 @@ function Booking(){
     const { user } = useAuth0();
 
     const getButtons = function() {
-        const array = ["Art Laptops", ""];
+        const array = ["Art Laptops", "Ipads", "IT Laptops", "Library Laptops", "CR1", "CR2", "CR3", "CR4", "Hall", "Fitness Suites", "Gym", "Social Space"];
         return array.map((num) => {
             return <button>{num}</button>
         })
@@ -16,7 +16,9 @@ function Booking(){
         <div id = 'container'>
             <h1>Hello {user.name}</h1>
             <h2></h2>
-            {getButtons()}
+            <div classname = "class-btns">
+                {getButtons()}
+            </div>
         </div>
     )
     }
