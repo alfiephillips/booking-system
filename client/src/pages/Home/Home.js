@@ -1,19 +1,19 @@
 import './Home.css';
 import { useAuth0 } from "@auth0/auth0-react";
 
+
 function Home(){
-    const { loginWithRedirect } = useAuth0();
     return (
-    <div>
-        <nav>
+        <div>
+            <nav>
             <ul>
-            <li className="active"><a href="/">Home</a></li>
-            <li><a onClick={() => loginWithRedirect()} href='/'>Login</a></li>
+                <li className="active"><a href="/">Home</a></li>
+                <li><a onClick={() => loginWithRedirect()} href='/'>Login</a></li>
             </ul>
-        </nav>
-    </div>
+            </nav>
+        </div>
     )
-}
+};
 
 
 export default Home;
