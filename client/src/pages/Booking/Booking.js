@@ -1,12 +1,12 @@
 import './Booking.css';
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import JSONPretty from 'react-json-pretty';
-import Calendar from '../components/Calendar';
+import Calendar from '../../components/Calendar';
 function Booking(){
     const { user } = useAuth0();
 
-    getButtons = () => {
-        const array = [1,2,3,4,5,6,7,8,9];
+    const getButtons = function() {
+        const array = ["Art Laptops", ""];
         return array.map((num) => {
             return <button>{num}</button>
         })
@@ -16,7 +16,7 @@ function Booking(){
         <div id = 'container'>
             <h1>Hello {user.name}</h1>
             <h2></h2>
-            {this.getButtons()}
+            {getButtons()}
         </div>
     )
     }
