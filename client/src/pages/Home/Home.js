@@ -1,8 +1,8 @@
 import "./Home.css";
 import { useAuth0 } from "@auth0/auth0-react";
-import { loginWithRedirect } from "@auth0";
 
 function Home() {
+	const { loginWithRedirect } = useAuth0();
 	return (
 		<div>
 			<nav>
