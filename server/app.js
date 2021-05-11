@@ -5,8 +5,6 @@ const cors = require('cors')
 const morgan = require('morgan');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
-const cookieSession = require('cookie-session');
 
 
 const app = express();
@@ -22,7 +20,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 app.use(morgan('dev'));
-app.use(cookieParser());
 
 // Routes
 

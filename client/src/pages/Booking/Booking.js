@@ -4,15 +4,12 @@ import JSONPretty from 'react-json-pretty';
 
 function Booking(){
     const { user } = useAuth0();
-    if (user === null){
-        console.log("Leo");
-    }
-    console.log(user);
-
+    
     return(
         <div id = 'container'>
-            
-            <JSONPretty data={user} />
+            <img src ={user.picture}></img>
+            <h1>Hello {user.name}</h1>
+            <h2></h2>
         </div>
     )
     }

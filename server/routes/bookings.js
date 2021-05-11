@@ -87,8 +87,7 @@ router.get('/:id', jwtCheck, (req, res) => {
             console.log(data);
             return res.status(200).json({
                 status: 200,
-                data: data,
-                message: "Booking"
+                data: data
             })
         }
     })
