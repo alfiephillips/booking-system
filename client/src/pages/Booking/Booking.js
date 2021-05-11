@@ -16,27 +16,11 @@ function Booking(){
         <div id = 'container'>
             <h1>Hello {user.name}</h1>
             <h2></h2>
-            <div classname = "class-btns">
+            <div className = "class-btns">
                 {getButtons()}
             </div>
         </div>
     )
-    }
-
-	const getButtons = () => {
-		const array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-		return array.map((num) => {
-			return <button>{num}</button>;
-		});
-	};
-
-	return (
-		<div id='container'>
-			<h1>Hello {user.name}</h1>
-			<h2></h2>
-			{this.getButtons()}
-		</div>
-	);
     }
 
 export default withAuthenticationRequired(Booking, {
