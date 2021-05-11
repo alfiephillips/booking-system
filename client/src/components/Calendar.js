@@ -1,9 +1,11 @@
-import React from 'react';
+import React from "react";
 
-export default class Calendar extends React.Component {
-    render() {
-        return (
-            <div>
-        )
-    }
+export default class BookingCalendar extends React.Component {
+	render() {
+		return (
+			<div>
+				<h2>Calender</h2>
+			</div>
+		);
+	}
 }
