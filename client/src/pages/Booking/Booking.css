@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 #section-container {
     font-family: 'Lato', sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -6,13 +8,14 @@
 }
 #class-btn {
     background: rgb(92, 132, 241);
-    font-family: 'roboto';
+    font-family: 'Roboto';
     font-weight: 600;
     height: 6vh;
-    width: 15vw;
+    width: 10vw;
     margin: 10px;
     border: 2px solid white;
     border-radius: 10px;
+    cursor: pointer;
 }
 #btn-container {
     height:auto;

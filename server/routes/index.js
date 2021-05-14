@@ -1,7 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const sqlite = require('sqlite3');
-const db = new sqlite.Database('./database.db')
+const db = require('../config/db.js')
 const router = express.Router();
 
 

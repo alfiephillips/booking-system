@@ -5,6 +5,7 @@ const cors = require('cors')
 const morgan = require('morgan');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
+const chalk = require('chalk')
 
 
 const app = express();
@@ -30,5 +31,5 @@ app.use('/bookings', require('./routes/bookings'));
 // Listening for requests
 
 app.listen(PORT, () => {
-    console.log(`Server starting on http://localhost:${PORT}`);
+    console.log(chalk.green(`Server starting on http://localhost:${PORT}`));
 })

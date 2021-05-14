@@ -1,31 +1,25 @@
 const express = require('express');
 const sqlite = require('sqlite3');
-const db = new sqlite.Database('./database.db')
+const db = require('../config/db.js');
 const router = express.Router();
-var jwt = require('express-jwt');
-var jwks = require('jwks-rsa');
+const jwtCheck = require('../middleware/jwt.js');
+const jwtDecode = require('jwt-decode');
+// const checkUser = require('../middleware/checkUser.js');
 const crypto = require("crypto");
 
-var jwtCheck = jwt({
-    secret: jwks.expressJwtSecret({
-        cache: true,
-        rateLimit: true,
-        jwksRequestsPerMinute: 60,
-        jwksUri: 'https://booking-sys.eu.auth0.com/.well-known/jwks.json'
-  }),
-  audience: 'http://localhost:3000',
-  issuer: 'https://booking-sys.eu.auth0.com/',
-  algorithms: ['RS256']
-});
-
 router.use(jwtCheck);
+// router.use(checkUser);
 
 router.get('/', jwtCheck, (req, res) => {
+    // console.log(req.headers.authorization)
+    const token = jwtDecode(req.headers.authorization)
+    // const tokenPayload = jwtDecode(token, {header: true});
+
+    // console.log(tokenPayload);
 
     db.all(
         `SELECT * FROM Bookings`
     , (error, data) => {
-        console.log(data);
         if (error) {
             return res.status(400).json({
                 status: 401,
@@ -71,6 +65,8 @@ router.post('/create', jwtCheck, (req, res) => {
 })
 
 router.get('/:id', jwtCheck, (req, res) => {
+
+    console.log(req.headers.authorization)
     id = req.params.id
 
     db.get(`
@@ -84,7 +80,6 @@ router.get('/:id', jwtCheck, (req, res) => {
                 message: "That booking was not found, please create one first!"
             })
         } else {
-            console.log(data);
             return res.status(200).json({
                 status: 200,
                 data: data
@@ -92,6 +87,14 @@ router.get('/:id', jwtCheck, (req, res) => {
         }
     })
 })
+
+// router.delete('/:id', jwtCheck, (req, res) => {
+//     const jwtDecode = require("jwt-decode");
+//     const token = jwtDecode(req.headers.authorization)
+//     const tokenPayload = jwtDecode(token).id; // "123456789"
+// })
+
+
 
 
 module.exports = router;

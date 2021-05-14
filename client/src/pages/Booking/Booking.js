@@ -11,11 +11,12 @@ class Section extends Component {
 				"Ipads",
 				"IT Laptops",
 				"Library Laptops",
-				"Alfie's Father",
+				"Chicken Noodles",
 			];
-			return array.map((num) => {
-				return <button id='class-btn'>{num}</button>;
-			});
+			
+			return array.map((item) => {
+				return <a href={item}><button id='class-btn'>{item}</button></a>;
+			});		
 		};
 
 		return (

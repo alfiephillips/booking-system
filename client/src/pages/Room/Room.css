@@ -1,0 +1,22 @@
+
+#timeContainer{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left:10%;
+    height: 60vh;
+    background-color: green;
+    display: block;
+    width: 15%;
+}
+#timeButton{
+    background-color: #04AA6D;
+    border: 1px solid green;
+    border-radius: 5px;
+    color: white; 
+    padding: 30px 24px;
+    display: block;
+    width: 100%;
+}
