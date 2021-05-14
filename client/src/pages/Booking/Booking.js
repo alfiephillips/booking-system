@@ -1,27 +1,34 @@
 import "./Booking.css";
+import {Component} from "react";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
-import JSONPretty from 'react-json-pretty';
-import Calendar from '../../components/Calendar';
+
+class Section extends Component {
+    render() {
+        const getButtons = () => {
+            let array = ["leo's mother", "Art Laptops", "Ipads", "IT Laptops", "Library Laptops", "Alfie's Father"]
+            return array.map((num) => {
+                return <button id="class-btn">{num}</button>
+            })
+        }
+
+        return (
+            <div className = 'container'>
+            <div id = 'btn-container'>
+                    {getButtons()}
+                </div>
+            </div>
+        )
+    }
+}
+
 function Booking(){
     const { user } = useAuth0();
 
-    const getButtons = function() {
-        const array = ["Art Laptops", "Ipads", "IT Laptops", "Library Laptops", "CR1", "CR2", "CR3", "CR4", "Hall", "Fitness Suites", "Gym", "Social Space"];
-        return array.map((num) => {
-            return <button>{num}</button>
-        })
-    }
-    
-    return(
-        <div id = 'container'>
-            <h1>Hello {user.name}</h1>
-            <h2></h2>
-            <div className = "class-btns">
-                {getButtons()}
-            </div>
-        </div>
+    return (
+        <div cl
     )
-    }
+
+}
 
 export default withAuthenticationRequired(Booking, {
 	// Show a message while the user waits to be redirected to the login page.

@@ -1,0 +1,22 @@
+#container {
+    font-family: 'Lato', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: flex;
+}
+#class-btn {
+    background: rgb(92, 132, 241);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    height: 6vh;
+    width: 15vw;
+    margin: 10px;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+#btn-container {
+    height:auto;
+    width: 50vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
