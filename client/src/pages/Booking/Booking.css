@@ -1,4 +1,4 @@
-#container {
+#section-container {
     font-family: 'Lato', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -6,7 +6,8 @@
 }
 #class-btn {
     background: rgb(92, 132, 241);
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'roboto';
+    font-weight: 600;
     height: 6vh;
     width: 15vw;
     margin: 10px;
