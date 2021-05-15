@@ -1,14 +1,33 @@
 import "./Room.css";
-import { Component } from "react";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 
-function Room(){
-    const user = useAuth0();
 
+function Room(){
+    const {user, getAccessTokenWithPopup, getAccessTokenSilently} = useAuth0();
+    // const {redirectUri, setRedirectUri} = useState("/room");
+
+    const callApi = async () => {
+        try {
+        const token = await getAccessTokenSilently({audience: `http://localhost:3000`,});
+        console.log(token);
+        const response = await fetch(`http://localhost:3000/bookings`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+    
+          const responseData = await response.json();
+          console.log(responseData);
+        } catch (err){
+            console.error(err);
+        }
+      };
+
+    
     return (
         <div className = "container">
             <div id = "timeContainer">
-                <button id = "timeButton">Registration</button>
+                <button onClick = {callApi} id = "timeButton">Registration</button>
                 <button id = "timeButton">Period 1</button>
                 <button id = "timeButton">Period 2</button>
                 <button id = "timeButton">Study 1</button>

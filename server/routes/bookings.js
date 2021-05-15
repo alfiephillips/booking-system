@@ -24,13 +24,13 @@ router.get('/', jwtCheck, (req, res) => {
             return res.status(400).json({
                 status: 401,
                 error: error,
-                message: "Could not find any bookings."
+                message: "There has been error finding any bookings!"
             })
         } else {
             return res.status(201).json({
                 status: 201,
                 data: data,
-                message: "Bookings"
+                message: `${data.length} bookings.`
             })
         }
     })

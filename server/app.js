@@ -26,6 +26,7 @@ app.use(morgan('dev'));
 
 app.use('/', require('./routes/index'));
 app.use('/bookings', require('./routes/bookings'));
+app.use('/rooms', require('./routes/rooms'));
 
 
 // Listening for requests
