@@ -3,7 +3,7 @@ const sqlite = require("sqlite3");
 const db = require("../config/db.js");
 const router = express.Router();
 const jwtCheck = require("../middleware/jwt.js");
-// const checkUser = require('../middleware/checkUser.js');
+const { auth } = require("express-openid-connect");
 const crypto = require("crypto");
 
 router.use(jwtCheck);

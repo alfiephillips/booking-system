@@ -7,6 +7,7 @@
 	"author": "Alfie Phillips and Leo Wildman",
 	"license": "MIT",
 	"dependencies": {
+		"auth0": "^2.35.0",
 		"axios": "^0.21.1",
 		"bcrypt": "^5.0.1",
 		"body-parser": "^1.19.0",
@@ -21,7 +22,7 @@
 		"express": "^4.17.1",
 		"express-jwt": "^6.0.0",
 		"express-jwt-authz": "^2.4.1",
-		"express-openid-connect": "^2.3.1",
+		"express-openid-connect": "^2.4.0",
 		"jwks-rsa": "^2.0.3",
 		"jwt-decode": "^3.1.2",
 		"morgan": "^1.10.0",
