@@ -6,7 +6,6 @@ class Section extends Component {
 	render() {
 		const getButtons = () => {
 			let array = [
-				"leo's mother",
 				"Art Laptops",
 				"Ipads",
 				"IT Laptops",
