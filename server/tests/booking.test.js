@@ -11,7 +11,7 @@ let options = {
 	},
 	data: {
 		room_name: "E2",
-		author: "Alfie Poopy Pants",
+		author: "Alfie",
 		class: "10X2",
 		start_time: 138847343,
 		end_time: 34343342,
